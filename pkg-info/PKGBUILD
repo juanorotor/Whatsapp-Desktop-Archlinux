@@ -1,0 +1,31 @@
+# Maintainer: Yücel Toluyağ <ytoluyag@gmail.com>
+pkgname=whatsapp-desktop
+pkgrel=2
+pkgver=0.5.0
+pkgdesc="Unofficial whatsapp web desktop client. Build with Electron."
+url="https://github.com/Enrico204/Whatsapp-Desktop"
+provides=("whatsapp-desktop=${pkgver}")
+arch=('any' 'x86_64')
+license=('MIT')
+depends=('notify-osd' 'libnotify' 'gconf' 'gtk2' 'libxss')
+source=(
+  "${pkgname}.desktop"
+  "${pkgname}.png"
+)
+source_x86_64+=(
+  "${url}/releases/download/v${pkgver}/WhatsApp-v0.5.0-linux-x64.tar.gz"
+)
+sha256sums=('773821a35143d30f09eda6cf14ccc58a9835c10cc0fc63cf7fc781e58f080ce9'
+            'c128bdf1366f26b203c2a97b1284d66bd28d63c45812a7456385e1bf4afa27e4')
+package() {
+  install -d "${pkgdir}/opt"
+  cp -R "${srcdir}/WhatsApp-linux-x64" "${pkgdir}/opt/Whatsapp"
+
+  install -d "${pkgdir}/usr/bin"
+  ln -sf "../../opt/Whatsapp/WhatsApp" "${pkgdir}/usr/bin/Whatsapp"
+
+  install -D -m644 "./${pkgname}.desktop" \
+      "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -D -m644 "./${pkgname}.png" \
+      "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+}
