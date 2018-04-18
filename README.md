@@ -10,4 +10,4 @@ cd Whatsapp-Desktop-Archlinux
 sudo pacman -U whatsapp-desktop-0.5.0-2-any.pkg.tar.xz
 ```
 
-![Version](https://github.com/yuceltoluyag/dbeaver/blob/master/1.png?raw=true)
+![Version](https://raw.githubusercontent.com/yuceltoluyag/Whatsapp-Desktop-Archlinux/master/screenshot_5.png)
